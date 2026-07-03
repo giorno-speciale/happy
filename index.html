@@ -3,67 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Michi Invitación!</title>
+    <title>¡Invitación especial!</title>
     
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <!-- Librería Lottie para el confeti -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 
     <style>
         body {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             background-color: #f3e3c8; 
             min-height: 100vh;
             position: relative;
+            overflow-x: hidden;
         }
-        /* Contenedor del confeti (fijo en el fondo) */
+
         #confetti-container {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0; /* Asegura que esté detrás de las imágenes */
-            pointer-events: none; /* Permite hacer click a través del confeti */
+            z-index: 1; /* Fondo */
+            pointer-events: none;
         }
+
         img {
             width: 100%;
             height: auto;
             display: block;
             position: relative;
-            z-index: 1; /* Asegura que las imágenes estén encima */
+            z-index: 2; /* Imágenes encima del confeti */
         }
     </style>
 </head>
 <body>
 
-    <!-- Contenedor donde aparecerá el confeti -->
     <div id="confetti-container"></div>
 
-    <!-- Imágenes -->
     <img src="tu-imagen.png" alt="Invitación 1">
     <img src="tu-imagen-1.png" alt="Invitación 2">
     <img src="tu-imagen-2.png" alt="Invitación 3">
 
     <script>
-        // Configuración de la animación
-        lottie.loadAnimation({
+        // Cargar animación
+        var anim = lottie.loadAnimation({
             container: document.getElementById('confetti-container'),
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: 'Confetti.json' // Asegúrate de que el archivo se llame así exactamente
+            path: 'Confetti.json' 
         });
 
-        // Desactivar clic derecho
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        }, false);
+        // Bloqueo de clic derecho
+        document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
 </body>
 </html>
