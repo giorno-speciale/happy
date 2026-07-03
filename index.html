@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Invitación especial!</title>
+    <title>¡Michi Invitación!</title>
     
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <meta property="og:title" content="¡Estás invitado al cumple de mi mascota!">
-    <meta property="og:description" content="¡No faltes, será un día increíble!">
-    <meta property="og:image" content="https://giorno-speciale.github.io/happy/preview.jpg">
-    <meta property="og:type" content="website">
+    <!-- Librería Lottie para el confeti -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 
     <style>
         body {
@@ -19,28 +17,50 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Color de fondo actualizado */
             background-color: #f3e3c8; 
+            min-height: 100vh;
+            position: relative;
+        }
+        /* Contenedor del confeti (fijo en el fondo) */
+        #confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Asegura que esté detrás de las imágenes */
+            pointer-events: none; /* Permite hacer click a través del confeti */
         }
         img {
-            width: 100%; 
+            width: 100%;
             height: auto;
             display: block;
+            position: relative;
+            z-index: 1; /* Asegura que las imágenes estén encima */
         }
     </style>
 </head>
 <body>
 
-    <!-- Tus imágenes aquí -->
+    <!-- Contenedor donde aparecerá el confeti -->
+    <div id="confetti-container"></div>
+
+    <!-- Imágenes -->
     <img src="tu-imagen.png" alt="Invitación 1">
+    <img src="tu-imagen-1.png" alt="Invitación 2">
+    <img src="tu-imagen-2.png" alt="Invitación 3">
 
-    <img src="tu-imagen-1.png" alt="Invitación 1">
+    <script>
+        // Configuración de la animación
+        lottie.loadAnimation({
+            container: document.getElementById('confetti-container'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'Confetti.json' // Asegúrate de que el archivo se llame así exactamente
+        });
 
-    <img src="tu-imagen-2.png" alt="Invitación 1">
-    <!-- Puedes añadir más imágenes aquí abajo -->
-
-    <!-- Script para desactivar el clic derecho -->
-   <script>
+        // Desactivar clic derecho
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         }, false);
