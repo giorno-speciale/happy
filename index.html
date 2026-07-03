@@ -32,12 +32,18 @@
 <body>
 
     <!-- Tus imágenes aquí -->
-    <img src="tu-imagen.jpg" alt="Invitación 1">
+    <img src="tu-imagen.png" alt="Invitación 1">
+
+    <img src="tu-imagen-1.png" alt="Invitación 1">
+
+    <img src="tu-imagen-2.png" alt="Invitación 1">
     <!-- Puedes añadir más imágenes aquí abajo -->
 
     <!-- Script para desactivar el clic derecho -->
-    <script>
-        document.addEventListener('contextmenu', event => event.preventDefault());
+   <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        }, false);
     </script>
 </body>
 </html>
